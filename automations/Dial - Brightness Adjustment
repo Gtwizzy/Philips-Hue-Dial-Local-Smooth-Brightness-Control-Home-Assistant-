@@ -4,7 +4,7 @@ triggers:
   - trigger: event
     event_type: zha_event
     event_data:
-      device_id: REPLACE THIS WITH YOUR DEVICE ID
+      device_id: # REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
       command: step_with_on_off
 actions:
   # First "up" turn after switching target: capture, then skip stepping
