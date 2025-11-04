@@ -11,6 +11,15 @@ This project turns a Philips Hue Tap Dial with rotary encoder into a **native Ho
 
 Built for **Zigbee (ZHA)** + **Home Assistant**, using a **Philips Hue Tap Dial** encoder.  
 
+---
+> Works with this device 👇
+
+<img src="docs/Philips_Hue_Tap_dial.png" alt="Philips Hue Tap Dial Switch" width="350">
+
+**Philips Hue Tap Dial Switch**  
+(Zigbee / 4 buttons + rotary dial)
+
+> Aka: Hue Tap Dial / Hue Dial Switch / Rotary Dimmer (naming varies by region)
 
 ---
 ## 🏗 System Overview
