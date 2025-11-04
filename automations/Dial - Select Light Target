@@ -1,0 +1,74 @@
+alias: Dial - Select Light Target
+description: ""
+triggers:
+  - id: b1
+    trigger: device
+    device_id: REPALCE THIS WITH YOUR DEVICE ID
+    domain: zha
+    type: remote_button_double_press
+    subtype: button_1
+  - id: b2
+    trigger: device
+    device_id: REPALCE THIS WITH YOUR DEVICE ID
+    domain: zha
+    type: remote_button_double_press
+    subtype: button_2
+  - id: b3
+    trigger: device
+    device_id: REPALCE THIS WITH YOUR DEVICE ID
+    domain: zha
+    type: remote_button_double_press
+    subtype: button_3
+  - id: b4
+    trigger: device
+    device_id: REPALCE THIS WITH YOUR DEVICE ID
+    domain: zha
+    type: remote_button_double_press
+    subtype: button_4
+actions:
+  - choose:
+      - conditions:
+          - condition: trigger
+            id: b1
+        sequence:
+          - action: input_text.set_value
+            target:
+              entity_id: input_text.dial_light_target
+            data:
+              value: light.living_room_ceiling_lights
+      - conditions:
+          - condition: trigger
+            id: b2
+        sequence:
+          - action: input_text.set_value
+            target:
+              entity_id: input_text.dial_light_target
+            data:
+              value: light.walkway_ceiling_lights
+      - conditions:
+          - condition: trigger
+            id: b3
+        sequence:
+          - action: input_text.set_value
+            target:
+              entity_id: input_text.dial_light_target
+            data:
+              value: light.kitchen_ceiling_light_sink
+      - conditions:
+          - condition: trigger
+            id: b4
+        sequence:
+          - action: input_text.set_value
+            target:
+              entity_id: input_text.dial_light_target
+            data:
+              value: light.tv_backlight
+  - action: input_number.set_value
+    target:
+      entity_id: input_number.dial_brightness_buffer
+    data:
+      value: 0
+  - target:
+      entity_id: input_boolean.dial_waiting_capture
+    action: input_boolean.turn_on
+mode: single
