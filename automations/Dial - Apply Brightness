@@ -1,0 +1,31 @@
+alias: Dial - Apply Brightness
+triggers:
+  - entity_id: input_number.dial_brightness_buffer
+    trigger: state
+conditions:
+  - condition: template
+    value_template: "{{ light | length > 0 }}"
+  - condition: template
+    value_template: "{{ bri > 0 }}"
+actions:
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ state_attr(light, 'supported_color_modes') is not none }}"
+        sequence:
+          - target:
+              entity_id: "{{ light }}"
+            data:
+              brightness: "{{ bri }}"
+              transition: 0.15
+            action: light.turn_on
+    default:
+      - target:
+          entity_id: "{{ light }}"
+        data:
+          brightness: "{{ bri }}"
+        action: light.turn_on
+mode: restart
+variables:
+  light: "{{ states('input_text.dial_light_target') }}"
+  bri: "{{ states('input_number.dial_brightness_buffer') | int }}"
