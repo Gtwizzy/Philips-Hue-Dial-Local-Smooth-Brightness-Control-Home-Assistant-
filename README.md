@@ -63,10 +63,15 @@ Create a new automation for each of the examples shown then Copy-paste one by on
 Inside each automation:
 
 Replace `light.living_room_ceiling_lights` etc with your light entities.
-And replace any of the tap dial button device ID's with the ID's that correspond with _your_ Philips Hue Tap buttons and dial functions. e.g Button 1 device ID `xxxyyyyzzzaaabbbcccdddeee`
-If you're unsure of how to find the device ID's for the button. The simplest and most efficient way to find them all and note them down can be to just create a dummy automation and in the UI editor select the trigger of the automation to be "Device" find your tap dial device and use the trigger "when button 1 pressed" from your tap dial. Then duplicate the trigger and change it to "button 2" and so on until you have all the buttons in the dummy automation as a trigger. Then also add a device trigger for the "dim up" and another for "dim down" functions of your tap dial. Once all of those are in your dummy automation go to "Edit in yaml" mode and then make note of the device ID numbers that corespond each of the buttons/dimmer functions.
+And replace any of the tap dial button device ID's with the ID's that correspond with _**your**_ own Philips Hue Tap buttons and dial functions. e.g Button 1 device ID = `xxxyyyyzzzaaabbbcccdddeee`
 
-> Future TODO: Create other similar automations that can conrol audio devices or covers
+If you're unsure of how to find the device ID's for your buttons or dial, the simplest and most efficient way to find them all and note them down can be to just create a dummy automation and in the UI editor select the trigger of the automation to be "Device", then find your tap dial device and use the trigger "when button 1 pressed" from your tap dial. 
+
+Then duplicate the trigger and change it to "button 2" repeat until you have all the buttons in the dummy automation as a trigger. Then also add a device trigger for the "dim up" and another for "dim down" functions of your tap dial. Once all of those are in your dummy automation go to "Edit in yaml" mode and then make note of the device ID numbers that corespond each of the buttons/dimmer functions.
+
+There are plenty of other ways to find these this is just a short efficient way to get them all showing in one spot without having to tab in and out of a million places in HA. If you go with this dummy route idea just be sure to note these somewhere before you delete the dummy automation, you won't use that automation for anything so there's no need to save it.
+
+> Future TODO: Create other similar automations that can conrol audio devices or covers/blinds
 
 ---
 
