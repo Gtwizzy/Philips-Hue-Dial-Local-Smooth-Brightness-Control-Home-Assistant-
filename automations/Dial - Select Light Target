@@ -3,25 +3,25 @@ description: ""
 triggers:
   - id: b1
     trigger: device
-    device_id: REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
+    device_id: # REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
     domain: zha
     type: remote_button_double_press
     subtype: button_1
   - id: b2
     trigger: device
-    device_id: REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
+    device_id: # REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
     domain: zha
     type: remote_button_double_press
     subtype: button_2
   - id: b3
     trigger: device
-    device_id: REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
+    device_id: # REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
     domain: zha
     type: remote_button_double_press
     subtype: button_3
   - id: b4
     trigger: device
-    device_id: REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
+    device_id: # REPLACE THIS WITH YOUR DEVICE ID FOR YOUR HUE TAP
     domain: zha
     type: remote_button_double_press
     subtype: button_4
