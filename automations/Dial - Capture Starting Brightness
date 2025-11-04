@@ -1,0 +1,32 @@
+alias: Dial - Capture Starting Brightness
+description: ""
+triggers:
+  - event_type: zha_event
+    event_data:
+      device_id: # REPLACE THIS WITH YOUR HUE TAP BUTTON DEVICE ID
+      command: step_with_on_off
+    trigger: event
+conditions:
+  - condition: state
+    entity_id: input_boolean.dial_waiting_capture
+    state: "on"
+actions:
+  - delay: 0.15
+  - variables:
+      target: "{{ states('input_text.dial_light_target') }}"
+      bri: "{{ state_attr(target, 'brightness') }}"
+      safe_bri: |-
+        {% if bri is not none %}
+          {{ bri }}
+        {% else %}
+          128
+        {% endif %}
+  - target:
+      entity_id: input_number.dial_brightness_buffer
+    data:
+      value: "{{ safe_bri }}"
+    action: input_number.set_value
+  - target:
+      entity_id: input_boolean.dial_waiting_capture
+    action: input_boolean.turn_off
+mode: restart
