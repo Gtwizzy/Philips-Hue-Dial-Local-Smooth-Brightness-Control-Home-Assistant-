@@ -1,4 +1,4 @@
-# 🕹️ Smooth Hue Dimming With the Philips Hue Tap Dial (Home Assistant)
+# 🕹️ Smooth Hue Dimming With the Philips Hue Tap Dial (Home Assistant ZHA)
 
 This project turns a Philips Hue Tap Dial with rotary encoder into a **native Home Assistant dimmer system** — including:
 
