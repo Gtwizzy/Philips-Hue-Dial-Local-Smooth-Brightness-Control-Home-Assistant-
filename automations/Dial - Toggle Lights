@@ -33,26 +33,26 @@ actions:
         sequence:
           - action: light.toggle
             target:
-              entity_id: light.living_room_ceiling_lights
+              entity_id: # REPLACE THIS WITH YOUR LIGHT ENTITY (e.g light.your_light_1)
       - conditions:
           - condition: trigger
             id: b2
         sequence:
           - action: light.toggle
             target:
-              entity_id: light.walkway_ceiling_lights
+              entity_id: # REPLACE THIS WITH YOUR NEXT LIGHT ENTITY (e.g light.your_light_2)
       - conditions:
           - condition: trigger
             id: b3
         sequence:
           - action: light.toggle
             target:
-              entity_id: light.kitchen_ceiling_light_sink
+              entity_id: # REPLACE THIS WITH YOUR NEXT LIGHT ENTITY (e.g light.your_light_3)
       - conditions:
           - condition: trigger
             id: b4
         sequence:
           - action: light.toggle
             target:
-              entity_id: light.tv_backlight
+              entity_id: # REPLACE THIS WITH YOUR NEXT LIGHT ENTITY (e.g light.your_light_4)
 mode: single
