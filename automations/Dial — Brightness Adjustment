@@ -1,0 +1,68 @@
+alias: Dial — Brightness Adjustment
+description: ""
+triggers:
+  - trigger: event
+    event_type: zha_event
+    event_data:
+      device_id: REPLACE THIS WITH YOUR DEVICE ID
+      command: step_with_on_off
+actions:
+  # First "up" turn after switching target: capture, then skip stepping
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.dial_waiting_capture
+            state: "on"
+          - condition: template
+            value_template: "{{ trigger.event.data.args[0] == 0 }}"
+        sequence:
+          - delay: 0.1
+          - target:
+              entity_id: input_number.dial_brightness_buffer
+            data:
+              value: "{{ state_attr(target, 'brightness') | int(128) }}"
+            action: input_number.set_value
+          - target:
+              entity_id: input_boolean.dial_waiting_capture
+            action: input_boolean.turn_off
+          - stop: Captured brightness on first up turn — skip dim step
+
+  # First "down" turn after switching target: just clear the flag (buffer will already be 0-safe)
+  - choose:
+      - conditions:
+          - condition: state
+            entity_id: input_boolean.dial_waiting_capture
+            state: "on"
+          - condition: template
+            value_template: "{{ trigger.event.data.args[0] == 1 }}"
+        sequence:
+          - target:
+              entity_id: input_boolean.dial_waiting_capture
+            action: input_boolean.turn_off
+
+  # Normal stepping (both directions)
+  - choose:
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.event.data.args[0] == 0 }}"
+        sequence:
+          - target:
+              entity_id: input_number.dial_brightness_buffer
+            data:
+              value: "{{ [ buffer + step, 255 ] | min }}"
+            action: input_number.set_value
+      - conditions:
+          - condition: template
+            value_template: "{{ trigger.event.data.args[0] == 1 }}"
+        sequence:
+          - target:
+              entity_id: input_number.dial_brightness_buffer
+            data:
+              value: "{{ [ buffer - step, 0 ] | max }}"
+            action: input_number.set_value
+mode: restart
+variables:
+  target: "{{ states('input_text.dial_light_target') }}"
+  buffer: "{{ states('input_number.dial_brightness_buffer') | int }}"
+  step_raw: "{{ trigger.event.data.args[1] | int(8) }}"
+  step: "{{ (step_raw / 4) | int(5) }}"
