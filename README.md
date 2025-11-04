@@ -29,9 +29,9 @@ This setup uses **5 automations** and **3 helpers**:
 |-----------|------|
 | Toggle Lights | Single-tap toggles light |
 | Select Light Target For Dimming Control| Double-tap chooses light |
-    | Capture Starting Brightness | Catches brightness when rotating dial |
-    | Brightness Adjustment | Smoothly ramps buffer value |
-    | Apply Brightness | Sends brightness to lights smoothly |
+| Capture Starting Brightness | Catches brightness when rotating dial |
+| Brightness Adjustment | Smoothly ramps buffer value |
+| Apply Brightness | Sends brightness to lights smoothly |
 
 ---
 
