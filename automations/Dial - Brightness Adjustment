@@ -1,4 +1,4 @@
-alias: Dial — Brightness Adjustment
+alias: Dial - Brightness Adjustment
 description: ""
 triggers:
   - trigger: event
